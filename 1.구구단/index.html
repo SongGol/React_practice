@@ -24,14 +24,17 @@
                 };
             }
 
+            //function을 넣으면 this가 달라지기 때문에 무조건 화살표함수 사용
             onSubmit = (e) => {
                 e.preventDefault();
                 if (parseInt(this.state.value) === this.state.firstNumber * this.state.secondNumber) {
-                    this.setState({
-                        result: `${this.state.value} 정답`,
-                        firstNumber: Math.ceil(Math.random() * 9),
-                        secondNumber: Math.ceil(Math.random() * 9),
-                        value: '',
+                    this.setState((prevState) => {
+                        return {
+                            result: `${prevState.value} 정답`,
+                            firstNumber: Math.ceil(Math.random() * 9),
+                            secondNumber: Math.ceil(Math.random() * 9),
+                            value: '',
+                        }
                     });
                 } else {
                     this.setState({
@@ -39,19 +42,22 @@
                         value: '',
                     });
                 }
+                this.input.focus();
             };
 
             onChange = (e) => {
                 this.setState({ value: e.target.value })
             };
 
+            input;
+
             render() {
                 return (
                     <React.Fragment>
                         <div>{this.state.firstNumber}곱하기{this.state.secondNumber}는?</div>
                         <form onSubmit={this.onSubmit}>
-                            <input type="number" value={this.state.value} onChange={this.onChange} />
-                            <button>입력!</button>
+                            <input ref={(c) => {this.input = c;}} type="number" value={this.state.value} onChange={this.onChange} />
+                            <button type="submit">입력!</button>
                         </form>
                         <div>{this.state.result}</div>
                     </React.Fragment>
