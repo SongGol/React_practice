@@ -1,13 +1,5 @@
 import React, { useState, useRef } from 'react';
 
-const renderAverage = (result) => {
-    return result.length === 0 
-        ? null 
-        : <>
-            <div>평균시간: {result.reduce((a, c) => a + c) /result.length}ms</div>
-        </>
-};
-
 const ReactionRateHooks = () => {
     const [state, setState] = useState('waiting');
     const [message, setMessage] = useState('클릭해서 시작하세요');
@@ -42,6 +34,14 @@ const ReactionRateHooks = () => {
         setResult([]);
     };
 
+    const renderAverage = (result) => {
+        return result.length === 0 
+            ? null 
+            : <>
+                <div>평균시간: {result.reduce((a, c) => a + c) /result.length}ms</div>
+                <button onClick={onReset}>리셋</button>
+            </>
+    };
 
     return (
         <>
