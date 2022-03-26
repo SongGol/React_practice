@@ -1,4 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, memo } from 'react';
+
+// const Try = memo(({ tryInfo }) => {
+//     return (
+//         <li>
+//             <div>{tryInfo.try}</div>
+//             <div>{tryInfo.result}</div>
+//         </li>
+//     )
+// });
 
 class Test extends Component {
     state = {
