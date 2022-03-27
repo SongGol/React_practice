@@ -54,13 +54,17 @@ class RSP extends Component {
         clearInterval(this.interval);
     }
 
+    onClickBtn = (choice) => () => {
+
+    }
+
     render() {
         const { result, score, rspState } = this.state;
         return (
             <>
                 <div>{rspState}</div>
                 <div>
-                    <button id="rock" className="btn" onClick={() => onClickBtn('바위')}>바위</button>
+                    <button id="rock" className="btn" onClick={onClickBtn('바위')}>바위</button>
                     <button id="scissor" className="btn" onClick={() => onClickBtn('가위')}>가위</button>
                     <button id="paper" className="btn" onClick={() => onClickBtn('보')}>보</button>
                 </div>
