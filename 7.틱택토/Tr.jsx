@@ -1,9 +1,11 @@
 import React from 'react';
 import Td from './Td';
 
-const Tr = () => {
+const Tr = ({rowData, rowIndex, dispatch}) => {
     return (
-        <Td>{''}</Td>
+        <tr>
+            {Array(rowData.length).fill().map((td, i) => (<Td rowIndex={rowIndex} cellIndex={i} dispatch={dispatch} cellData={rowData[i]}>{''}</Td>))}
+        </tr>
     )
 };
 
