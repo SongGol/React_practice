@@ -1,6 +1,7 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
+const ReactDOMClient = require('react-dom/client');
 
 import MineSearch from './MineSearch';
 
-ReactDOM.render(<MineSearch />, document.querySelector("#root"));
+const root = ReactDOMClient.createRoot(document.getElementById("root"));
+root.render(<MineSearch />);
